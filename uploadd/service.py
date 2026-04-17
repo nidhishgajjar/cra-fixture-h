@@ -22,3 +22,12 @@ def retrieve(user_id, filename):
     if not target.is_file():
         return None
     return target.read_bytes()
+
+
+def delete(filename):
+    """Remove a file from uploads."""
+    path = os.path.join(UPLOAD_ROOT, filename)
+    if os.path.exists(path):
+        os.remove(path)
+        return True
+    return False
